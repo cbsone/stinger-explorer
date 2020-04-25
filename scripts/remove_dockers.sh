@@ -33,9 +33,9 @@ else
     DEPENDENCIES_ROOT="$(dirname "$( pwd -P )")/node_modules/$DEPENDENCIES_SCOPE_NAME"
 fi
 
-EOSDOCKER="$DEPENDENCIES_ROOT/docker-eosio-nodeos"
+EOSDOCKER="$DEPENDENCIES_ROOT/docker-stinger-nodeos"
 SHIPDOCKER="$DEPENDENCIES_ROOT/docker-ship"
-COMPILER="$DEPENDENCIES_ROOT/api-eosio-compiler/docker-eosio-cdt"
+COMPILER="$DEPENDENCIES_ROOT/api-eosio-compiler/docker-stinger-cdt"
 
 USAGE="Usage: eosio-explorer remove_dockers (Remove any currently present Docker containers)"
 

@@ -38,8 +38,8 @@ ISDEV=false
 CLEARBROWSERSTORAGE=false
 
 
-USAGE="Usage: eosio-explorer start_gui [--clear-browser-storage]
-                                [-dev | --develop] (program to start eosio-explorer gui)
+USAGE="Usage: stinger-explorer start_gui [--clear-browser-storage]
+                                [-dev | --develop] (program to start stinger-explorer gui)
 
 where:
     --clear-browser-storage       Starts the tool with clearing browser local storage
@@ -80,7 +80,7 @@ do
 done
 
 
-FILE=$CONFIG_FILE/eosio_explorer_config.json
+FILE=$CONFIG_FILE/stinger_explorer_config.json
 if [ -f "$FILE" ]; then
   echo " "
   echo "$FILE exists"
@@ -96,7 +96,7 @@ echo "=============================="
 echo "STARTING CDT DOCKER"
 echo "=============================="
 # start the docker
-(cd $COMPILER/docker-eosio-cdt && ./start_eosio_cdt_docker.sh && printf "${GREEN}done${NC}")
+# (cd $COMPILER/docker-stinger-cdt && ./start_stinger_cdt_docker.sh && printf "${GREEN}done${NC}")
 write_to_log "CDT docker started"
 
 echo " "

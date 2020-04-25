@@ -25,3 +25,5 @@ config.file.local
 
 #Local log file
 logger.txt
+
+yarn.lock

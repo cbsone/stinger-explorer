@@ -28,10 +28,10 @@ else
     DEPENDENCIES_ROOT="$(dirname "$( pwd -P )")/node_modules/$DEPENDENCIES_SCOPE_NAME"
 fi
 
-EOSDOCKER="$DEPENDENCIES_ROOT/docker-eosio-nodeos"
+EOSDOCKER="$DEPENDENCIES_ROOT/docker-stinger-nodeos"
 SHIPDOCKER="$DEPENDENCIES_ROOT/docker-ship"
 LOCALSERVICE="$DEPENDENCIES_ROOT/api-eosio-compiler"
-COMPILER="$LOCALSERVICE/docker-eosio-cdt"
+COMPILER="$LOCALSERVICE/docker-stinger-cdt"
 ISDEV=false
 MAKESAMPLEDATA=false
 SET_MODE=false
@@ -41,8 +41,8 @@ nodeos_endpoint=$NODE_DEFAULT_ENDPOINT
 domain_name="localhost"
 
 
-USAGE="Usage: eosio-explorer init [-s | --sample-data] [--server-mode]
-                           [-dev | --develop] [-b | --build] (program to initialize eosio-explorer)
+USAGE="Usage: stinger-explorer init [-s | --sample-data] [--server-mode]
+                           [-dev | --develop] [-b | --build] (program to initialize stinger-explorer)
                            [--set-mode=<1/2/3>] [--nodeos_endpoint=<endpoint>]
 
 where:
@@ -51,7 +51,7 @@ where:
     --set-mode          Set mode can take the value 1, 2 or 3(e.g.: --set-mode=1), 
                         1- Connect to default Nodeos instance provided by the tool
                         2- Connect to the endpoint passed using 'nodeos_endpoint=<endpoint>' argument
-                        3- Connect to the endpoint mentioned in config file (location: $HOME/eosio_explorer_config.json)
+                        3- Connect to the endpoint mentioned in config file (location: $HOME/stinger_explorer_config.json)
     --nodeos-endpoint   Starts the tool by connecting to the Nodeos instance endpoint(RPC endpoint) passed, this argument is valid only when --set-mode=2
 
     Only available in development:
@@ -106,9 +106,9 @@ do
 done
 
 printf ${GREEN}"\n"
-printf "=========================\n"
-printf "Welcome to EOSIO Explorer\n"
-printf "=========================\n"
+printf "===========================\n"
+printf "Welcome to Stinger Explorer\n"
+printf "===========================\n"
 printf "\n"${NC}
 
 # If set-mode is false then provide the options to select the endpoints
@@ -117,7 +117,7 @@ if ( ! $SET_MODE ); then
   echo ""
   echo "1. Default Nodeos instance provided by the tool"
   echo "2. A pre-existing Nodeos instance"
-  echo "3. The Nodeos instance endpoint detailed in the config file (location: $HOME/eosio_explorer_config.json)"
+  echo "3. The Nodeos instance endpoint detailed in the config file (location: $HOME/stinger_explorer_config.json)"
 
   read option
 
@@ -133,8 +133,8 @@ if ( ! $SET_MODE ); then
     read nodeos_endpoint
   elif [ $option == 3 ]
   then
-    echo "Reading the endpoint from $HOME/eosio_explorer_config.json" 
-    nodeos_endpoint=$(cat $HOME/eosio_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
+    echo "Reading the endpoint from $HOME/stinger_explorer_config.json" 
+    nodeos_endpoint=$(cat $HOME/stinger_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
     write_to_log "nodeos_endpoint entered: $nodeos_endpoint"
   else
     echo "Invalid option, starting tool with default instance... "
@@ -149,19 +149,19 @@ else
     if ( ! $NODEOS ); then
       echo "You have passed the mode as 2 but not provided the Nodeos instance endpoint."
       echo "please run the command again with endpoint or pass the mode as 1 to run with the default instance" 
-      echo "To know more about options, run 'eosio-explorer init -h'"
+      echo "To know more about options, run 'stinger-explorer init -h'"
       echo " "
       exit 1
     else
       nodeos_endpoint=$nodeos_value_passed   
     fi
   elif [ $option == 3 ]; then
-    echo "Reading the endpoint from $HOME/eosio_explorer_config.json" 
-    nodeos_endpoint=$(cat $HOME/eosio_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p') 
+    echo "Reading the endpoint from $HOME/stinger_explorer_config.json" 
+    nodeos_endpoint=$(cat $HOME/stinger_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p') 
   else    
     echo "Invalid mode, accepted values for --set-mode argument is 1, 2 or 3."
-    echo "Please run the command again with the valid mode or run 'eosio-explorer init' without --set-mode to select the mode manually"
-    echo "To know more about options, run 'eosio-explorer init -h'"
+    echo "Please run the command again with the valid mode or run 'stinger-explorer init' without --set-mode to select the mode manually"
+    echo "To know more about options, run 'stinger-explorer init -h'"
     echo " "
     exit 1
   fi     
@@ -237,12 +237,15 @@ echo "==============================="
 echo "INITIALISING CONFIG IN PACKAGES"
 echo "==============================="
 
+echo " "
+echo $APP
+
 # copy init config into different packages
-cp -f $APP/init_config.file $EOSDOCKER/config.file.local
-cp -f $APP/init_config.file $EOSDOCKER/scripts/config.file.local
-cp -f $APP/init_config.file $COMPILER/config.file.local
-cp -f $APP/init_config.file $SHIPDOCKER/config.file.local
-cp -f $APP/init_config.file $APP/config.file.local
+# cp -f $APP/init_config.file $EOSDOCKER/config.file.local
+# cp -f $APP/init_config.file $EOSDOCKER/scripts/config.file.local
+# cp -f $APP/init_config.file $COMPILER/config.file.local
+# cp -f $APP/init_config.file $SHIPDOCKER/config.file.local
+# cp -f $APP/init_config.file $APP/config.file.local
 
 # extract domain name from the URL for fill-pg
 domain_name=$(echo $nodeos_endpoint | cut -d'/' -f3 | cut -d':' -f1)
@@ -268,33 +271,33 @@ if [[ !($PWD == $YARN_GLOBAL_DIR*) ]]; then
   echo "INSTALLING DEPENDENCIES"
   echo "======================="
   write_to_log "Running yarn install"
-  yarn install
+  # yarn install
 fi
 
-echo " "
-echo "====================="
-echo "BUILDING EOSIO DOCKER"
-echo "====================="
-write_to_log "Build eosio docker"
-(cd $EOSDOCKER && ./build_eosio_docker.sh && printf "${GREEN}done${NC}")
+# echo " "
+# echo "======================="
+# echo "BUILDING STINGER DOCKER"
+# echo "======================="
+# write_to_log "Build stinger docker"
+# (cd $EOSDOCKER && ./build_stinger_docker.sh && printf "${GREEN}done${NC}")
+
+# echo " "
+# echo "===================================================="
+# echo "BUILDING STINGER_CDT DOCKER USED BY COMPILER SERVICE"
+# echo "===================================================="
+# write_to_log "Build stinger-cdt docker"
+# (cd $COMPILER && ./build_stinger_cdt_docker.sh && printf "${GREEN}done${NC}")
 
 echo " "
-echo "=================================================="
-echo "BUILDING EOSIO_CDT DOCKER USED BY COMPILER SERVICE"
-echo "=================================================="
-write_to_log "Build eosio-cdt docker"
-(cd $COMPILER && ./build_eosio_cdt_docker.sh && printf "${GREEN}done${NC}")
-
-echo " "
-echo "============================"
-echo "PULLING FILL-PG DOCKER IMAGE"
-echo "============================"
-write_to_log "Pulling fill-pg docker image"
-(cd $SHIPDOCKER && ./build_ship_docker.sh && printf "${GREEN}done${NC}")
+# echo "============================"
+# echo "PULLING FILL-PG DOCKER IMAGE"
+# echo "============================"
+# write_to_log "Pulling fill-pg docker image"
+# (cd $SHIPDOCKER && ./build_ship_docker.sh && printf "${GREEN}done${NC}")
 
 # remove existing dockers
 write_to_log "Clean up existing docker containers"
-./remove_dockers.sh
+# ./remove_dockers.sh
 
 if [ $option != 3 ];
 then
@@ -304,11 +307,11 @@ then
   echo "Creating config files to store endpoints"
   echo "========================================"
 
-  (cd $HOME && echo '{"NodeEndpoint":"'$nodeos_endpoint'"}'>eosio_explorer_config.json && printf "${GREEN}done${NC}")
+  (cd $HOME && echo '{"NodeEndpoint":"'$nodeos_endpoint'"}'>stinger_explorer_config.json && printf "${GREEN}done${NC}")
 
   write_to_log "Created config file in $HOME directory"
   echo " "
-  echo "Path:" $HOME/eosio_explorer_config.json 
+  echo "Path:" $HOME/stinger_explorer_config.json 
   echo '{"NodeEndpoint":"'$nodeos_endpoint'"}'
   echo " "
 fi  

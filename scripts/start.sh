@@ -10,10 +10,14 @@ APP=$(dirname "$( pwd -P )")
 # sourcing variable from config file
 source $APP/config.file
 
+echo "$APP/config.file.local"
 # override config if there are any local config changes
 if [ -f "$APP/config.file.local" ]; then
   source $APP/config.file.local
 fi
+
+echo "is this config: "
+echo $IS_THIS_CONFIG
 
 RED='\033[0;31m'
 NC='\033[0m' # No Color
@@ -33,7 +37,7 @@ else
     DEPENDENCIES_ROOT="$(dirname "$( pwd -P )")/node_modules/$DEPENDENCIES_SCOPE_NAME"
 fi
 
-EOSDOCKER="$DEPENDENCIES_ROOT/docker-eosio-nodeos"
+EOSDOCKER="$DEPENDENCIES_ROOT/docker-stinger-nodeos"
 SHIPDOCKER="$DEPENDENCIES_ROOT/docker-ship"
 CONFIG_FILE=$HOME
 
@@ -46,8 +50,8 @@ HARDREPLAY=false
 NOTIMESTAMP=false
 
 
-USAGE="Usage: eosio-explorer start [-del | --delete] [--server-mode] [-s | --sample-data] [--clear-browser-storage]
-                            [-dev] [-del] [-b]  [--no-timestamp ] (program to start eosio-explorer)
+USAGE="Usage: stinger-explorer start [-del | --delete] [--server-mode] [-s | --sample-data] [--clear-browser-storage]
+                            [-dev] [-del] [-b]  [--no-timestamp ] (program to start stinger-explorer)
 
 where:
     -del, --delete            Removes existing Docker containers
@@ -125,7 +129,7 @@ if (!($ISDEV) && [ ! -e $APP"/build" ]); then
   BUILDAPPLICATION=true
 fi
 
-FILE=$CONFIG_FILE/eosio_explorer_config.json
+FILE=$CONFIG_FILE/stinger_explorer_config.json
 if [ -f "$FILE" ]; then
   echo " "
   echo "$FILE exists"
@@ -139,7 +143,7 @@ else
 fi
 
 # Get the endpoint stored in config file
-nodeos_endpoint=$(cat $CONFIG_FILE/eosio_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
+nodeos_endpoint=$(cat $CONFIG_FILE/stinger_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
 
 write_to_log "endpoint read from config file: $nodeos_endpoint"
 echo "Connecting to $nodeos_endpoint"
@@ -148,17 +152,17 @@ if [ $nodeos_endpoint == $NODE_DEFAULT_ENDPOINT ]
 then
   echo " "
   echo "=============================="
-  echo "STARTING EOSIO DOCKER"
+  echo "STARTING STINGER DOCKER"
   echo "=============================="
-  if ($MAKESAMPLEDATA); then
-    (cd $EOSDOCKER && ./start_eosio_docker.sh --nolog --sample-data && printf "${GREEN}done${NC}")
-  elif ($HARDREPLAY) then
-    (cd $EOSDOCKER && ./start_eosio_docker.sh --nolog --hard-replay && printf "${GREEN}done${NC}")
-  else
-    (cd $EOSDOCKER && ./start_eosio_docker.sh --nolog && printf "${GREEN}done${NC}")
-  fi
+  # if ($MAKESAMPLEDATA); then
+  #   (cd $EOSDOCKER && ./start_stinger_docker.sh --nolog --sample-data && printf "${GREEN}done${NC}")
+  # elif ($HARDREPLAY) then
+  #   (cd $EOSDOCKER && ./start_stinger_docker.sh --nolog --hard-replay && printf "${GREEN}done${NC}")
+  # else
+  #   (cd $EOSDOCKER && ./start_stinger_docker.sh --nolog && printf "${GREEN}done${NC}")
+  # fi
 
-  # wait until eosio blockchain is started
+  # wait until stinger blockchain is started
   waitcounter=0
   until $(curl --output /dev/null \
               --silent \
@@ -173,24 +177,24 @@ then
       waitcounter=$((waitcounter+1))
     else
       # if the blockchain is not running even after a minute, remove the dockers and try to start again
-      write_to_log "problem starting eosio nodeos docker"
+      write_to_log "problem starting stinger nodeos docker"
       echo " "
       printf "${RED}Problem starting docker${NC}"
       echo " "
       echo "here is what you can do"
-      echo "eosio-explorer start --delete (this will clear the data and start the application)"
-      echo "eosio-explorer init (this will initialize the application, clear all the blockchain and postgres db data and start the application)"
+      echo "stinger-explorer start --delete (this will clear the data and start the application)"
+      echo "stinger-explorer init (this will initialize the application, clear all the blockchain and postgres db data and start the application)"
       exit 0
     fi
   done
-  write_to_log "eosio docker started"
+  write_to_log "stinger docker started"
 fi
 
 echo " "
 echo "==========================================="
 echo "STARTING STATE HISTORY PLUGIN FILLER DOCKER"
 echo "==========================================="
-(cd $SHIPDOCKER && ./start_ship_docker.sh && printf "${GREEN}done${NC}")
+# (cd $SHIPDOCKER && ./start_ship_docker.sh && printf "${GREEN}done${NC}")
 write_to_log "State history plugin filler docker started"
 
 if ( ! $SERVERMODE ); then
@@ -212,7 +216,7 @@ if ( ! $SERVERMODE ); then
       echo " "
       (cd $APP && yarn build && printf "${GREEN}done${NC}")
     fi
-    nodeos_endpoint=$(cat $CONFIG_FILE/eosio_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
+    nodeos_endpoint=$(cat $CONFIG_FILE/stinger_explorer_config.json | sed -n 's|.*"NodeEndpoint":"\([^"]*\)".*|\1|p')
     (cd $APP/build && echo 'window._env_={"NODE_PATH": "'$nodeos_endpoint'"}'>env-config.js)
     write_to_log "nodeos endpoint is written to front-end config file"
   fi

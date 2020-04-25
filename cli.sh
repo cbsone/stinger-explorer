@@ -25,7 +25,7 @@ done
 # cd into this directory and we could start the shell scripts.
 cd $( dirname "$SYMLINKEDFILE" )
 
-USAGE="Usage: eosio-explorer [command]
+USAGE="Usage: stinger-explorer [command]
 
 where [command]:
     init            Initialize the tool by installing all dependencies, setting up 

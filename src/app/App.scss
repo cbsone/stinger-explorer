@@ -1,22 +1,32 @@
 // Styles
 @import 'scss/style.scss';
-
-.App{
-
-  //always pad footer at the bottom, even the main content is short
-  > div{
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    main{
-      flex: 1 1 auto;
-
-      //make Page Component fill all the space
-      display: flex;
-      flex-direction: column;
-      >div{
-        flex:1 1 auto;
-      }
+.App {
+    //always pad footer at the bottom, even the main content is short
+    >div {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        main {
+            flex: 1 1 auto;
+            //make Page Component fill all the space
+            display: flex;
+            flex-direction: column;
+            >div {
+                flex: 1 1 auto;
+            }
+        }
     }
-  }
+    .app-header {
+        background-color: #73818f !important;
+        color: #f0f3f5 !important;
+    }
+    .nav-link {
+        color: #ccc !important;
+    }
+    .nav-link:active {
+        color: #ffffff !important;
+    }
+    .eSeiZs {
+        color: #c8ced3 !important;
+    }
 }

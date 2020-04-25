@@ -84,17 +84,17 @@ const WelcomePopup = ({ toggle, open, toggleShowAgain }) => {
                 <img src="https://icon.now.sh/x/8ba5bf" alt="close" />
               </CloseButton>
               <PageTitleDivStyled>
-                Welcome to EOSIO Labs™: EOSIO Explorer
+                Welcome to Cbs One: Stinger Explorer
               </PageTitleDivStyled>
-              <p>EOSIO Labs™: EOSIO Explorer is an open source browser to observe activity of an EOSIO blockchain in a graphical
-                interface and a set of development tools to speed up EOSIO smart contract and application development.
+              <p>Cbs One: Stinger Explorer is an open source browser to observe activity of an Stinger blockchain in a graphical
+                interface and a set of development tools to speed up Stinger smart contract and application development.
               </p>
-              <p>Using EOSIO Labs™: EOSIO Explorer you can view blocks, transactions and actions on an EOSIO blockchain, manage
+              <p>Using Cbs One: Stinger Explorer you can view blocks, transactions and actions on an Stinger blockchain, manage
                 developer accounts and permissions associated with them, upload and interact with smart contracts
                 and much more.
               </p>
-              <p>If you have any feedback or you&apos;d like to contribute to the source code of EOSIO Labs™: EOSIO Explorer -
-                please follow our GitHub repository: <a href="https://github.com/EOSIO/eosio-explorer" target="_blank" rel="noopener noreferrer">https://github.com/EOSIO/eosio-explorer</a>
+              <p>If you have any feedback or you&apos;d like to contribute to the source code of Cbs One: Stinger Explorer -
+                please follow our GitHub repository: <a href="https://github.com/cbsone/stinger-explorer" target="_blank" rel="noopener noreferrer">https://github.com/cbsone/stinger-explorer</a>
               </p>
               <CheckBoxDivStyled style={{marginTop: '31px'}}>
                 <label className="checkboxContainer">
