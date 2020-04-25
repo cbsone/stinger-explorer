@@ -182,8 +182,8 @@ const Header = (props) => {
               <LogoWrapper>
                 <StyledEosioLogoSmallSVG/>
                 <AppName>
-                  <div>Cbs One<sub></sub></div>
-                  <div>Stinger Explorer</div>
+                  <div>CBS ONE<sub></sub></div>
+                  <div>Stinger Testnet</div>
                 </AppName>
               </LogoWrapper>
             </Nav>
