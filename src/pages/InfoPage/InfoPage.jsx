@@ -49,7 +49,7 @@ class InfoPage extends Component {
             </Col>
           </Row>
 
-          <Row>
+          <Row style={{display: 'none'}}>
             <Col xs="12">
               <FirstCardStyled>
                 <CardHeaderStyled>
