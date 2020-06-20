@@ -1,0 +1,49 @@
+@import "../../../assets/sass/mixins"
+
+.send-popup
+  max-width: 450px
+
+.send-popup__form
+  width: 100%
+
+.send-popup__form__switcher
+  margin-top: 30px
+
+.send-popup__form__input--send-to
+  margin-top: 15px
+
+.send-popup__form__input
+  margin-top: 30px
+
+.send-popup__btn-container
+  @include display-flex()
+  width: 100%
+  margin-top: 24px
+
+
+.send-popup__btn-send
+  @include reset-button
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 40px
+  width: 96px
+  margin-right: 20px
+  background: linear-gradient(22.88deg, #FFA300 31.27%, #FFD1AA 100%)
+  border-radius: 20px
+  box-shadow: 0px 0px 0.892857px rgba(236, 124, 42, 0.12), 0px 1.19048px 1.78571px rgba(236, 124, 42, 0.18), 0px 2.67857px 4.16667px rgba(236, 124, 42, 0.2), 0px 4.7619px 8.92857px rgba(236, 124, 42, 0.3)
+  color: var(--main-black-color)
+  cursor: pointer
+  transition: transform 300ms cubic-bezier(0, 0, 0, 1)
+
+  &:hover
+    transform: translateY(-2px)
+  &:active
+    transform: translateY(2px)
+  & span
+    margin-left: 4px
+    font-family: 'Gilroy', sans-serif
+    font-weight: bold
+    font-size: 14px
+    line-height: 17px
+    letter-spacing: 0.04em

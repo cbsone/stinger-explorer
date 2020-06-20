@@ -1,49 +1,23 @@
 import React from 'react';
-import { hydrate, render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import { PersistGate } from 'redux-persist/integration/react'
-import Cookies from 'js-cookie';
+import ReactDOM from 'react-dom';
+import { Router } from "react-router-dom"
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import {createBrowserHistory} from 'history'
 
-import store, { history, persistor } from 'store';
-import App from 'app';
+const history = createBrowserHistory()
 
-// Set the current timestamp from cookie -> process.env -> default empty
-const currentLastTimestamp = Cookies.get('lastTimestamp') || process.env.REACT_APP_LAST_INIT_TIMESTAMP || "";
-
-// If currentLastTimestamp is empty, current application run does not need to clear local storage.
-// Hence, ignore below steps for not clearing persisted store and not setting local storage variable.
-if ( currentLastTimestamp ){
-
-  const storedLastTimestamp = localStorage.getItem('lastTimestamp');
-
-  // If the current last timestamp from cookies / process.env is greater than the stored one, it means user has run init or has built the app again
-  // since the last initialization or build.
-  // Hence, clear the whole persisted store.
-  if (storedLastTimestamp < currentLastTimestamp){
-    persistor.purge();
-  }
-
-  localStorage.setItem('lastTimestamp', currentLastTimestamp);
-
-}
-
-const AppBundle = (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ConnectedRouter history={history}>
-        <>
-          <App/>
-          <div id="modal"></div>
-        </>
-      </ConnectedRouter>
-    </PersistGate>
-  </Provider>
+ReactDOM.render(
+  <Router history={history}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Router>,
+  document.getElementById('root')
 );
 
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrate(AppBundle, rootElement);
-} else {
-  render(AppBundle, rootElement);
-}
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

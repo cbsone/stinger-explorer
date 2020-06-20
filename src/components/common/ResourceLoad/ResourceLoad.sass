@@ -1,0 +1,26 @@
+@import "../../../assets/sass/mixins"
+
+.resource-row
+  display: flex
+  align-items: stretch
+  justify-content: space-between
+
+  .resource-row__load
+    height: 48px
+    width: 48px
+    margin-right: 16px
+
+    svg
+      transform: rotate(-90deg)
+
+  .resource-row__info
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+    & span:first-child
+      @include define-font('Gilroy', bold, 20px, var(--main-black-color))
+      
+    & span:last-child
+      @include define-font('Roboto', normal, 16px, var(--main-black-color))
+      opacity: 0.6

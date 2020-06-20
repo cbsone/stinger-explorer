@@ -1,0 +1,105 @@
+@import "../../assets/sass/mixins"
+
+.block-view-page
+  display: flex
+  flex-direction: column
+  padding: 32px
+
+  .block-view-page__title
+    margin-left: 24px
+    margin-bottom: 24px
+    @include define-font('Gilroy', bold, 20px, #3E445B)
+
+  .block-view-page__info
+    display: flex
+    flex-direction: column
+    margin-left: 24px
+    margin-bottom: 50px
+    
+    .block-view-page__info_row
+      display: flex
+      align-items: center
+      margin-bottom: 12px
+      @include define-font('Roboto', normal, 16px, #3E445B)
+
+      .info-name
+        min-width: 132px
+        margin-right: 12px
+        opacity: 0.6
+
+      .info-value
+        margin: 0 12px
+
+      .copy-icon
+        height: 16px
+        width: 16px
+        margin-left: 8px
+        background-image: url('../../assets/svg/copy-icon-disabled.svg')
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+        opacity: 0.5
+        cursor: pointer
+        transition: var(--main-transition)
+
+      .copy-icon:hover
+        background-image: url('../../assets/svg/copy-icon.svg')
+        opacity: 1
+
+    .block-view-page__info_row:last-child
+      margin-bottom: 0
+
+  .block-view-page__raw-panel
+    display: flex
+    flex-direction: column
+
+    .raw-panel__title
+      display: flex
+      margin-left: 24px
+
+      > div
+        position: relative
+        padding-bottom: 24px
+        @include define-font('Gilroy', bold, 20px, #3E445B)
+
+
+      > div::after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: -3px
+        height: 0
+        width: 100%
+        border-bottom: 3px solid #F8A303
+        border-bottom-left-radius: 3px
+        border-bottom-right-radius: 3px
+        z-index: 2
+
+  .raw-panel__card
+    max-width: 900px
+    padding: 32px
+    background: #FFFFFF
+    box-shadow: var(--main-card-shadow)
+    border-radius: 8px
+
+@media (max-width: 1000px)
+  .block-view-page
+    padding: 20px 0
+  .block-view-page__info_row
+    span
+      @include define-font('Gilroy', 500, 12px, #3E445B)
+
+  .info-value
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    width: 100%
+    max-width: 150px
+  .raw-panel__title span
+    font-size: 14px
+
+  .raw-panel__card
+    padding: 15px 0 !important
+    overflow-x: auto
+    width: 100vw
+    -webkit-overflow-scrolling: touch

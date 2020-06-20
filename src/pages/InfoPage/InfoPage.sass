@@ -1,0 +1,332 @@
+@import "../../assets/sass/mixins"
+
+.info-page
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  padding: 32px
+  max-width: 1350px
+  // overflow: hidden
+
+  .page-title-row
+    display: flex
+    align-items: center
+    padding-left: 24px
+    margin-bottom: 24px
+
+    .page-title-row__page-name
+      @include define-font('Gilroy', bold, 20px, var(--main-black-color))
+      
+  .info-top-row
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    .info-top-row__load-card
+      display: flex
+      align-items: stretch
+      justify-content: space-between
+      height: 144px
+      width: 480px
+      margin-right: 24px
+      padding: 20px
+      background: #FFFFFF
+      box-shadow: var(--main-card-shadow)
+      border-radius: 8px
+
+      .info-top-row__load-card_item
+        flex: 1
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        justify-content: space-between
+
+        .chips-title
+          height: 25px
+          padding: 0 8px
+          background: rgba(52, 48, 39, 0.03)
+          border-radius: 25px
+
+          & span
+            @include define-font('Gilroy', bold, 14px, var(--main-black-color))
+            line-height: 25px
+            letter-spacing: 0.04em
+            opacity: 0.6
+
+    .info-top-row__block-info
+      flex: 1
+      display: flex
+      justify-content: space-between
+      max-width: 720px
+
+      .info-container
+        flex: 1
+        display: flex
+        flex-direction: column
+
+        .info-container__title
+          @include define-font('Gilroy', bold, 14px, var(--main-black-color))
+          letter-spacing: 0.04em
+          // opacity: 0.3
+
+        .info-container__row
+          display: flex
+          align-items: center
+          margin-top: 12px
+
+          .info-container__row_parametr
+            flex: 1
+            max-width: 114px
+            margin-right: 12px
+            @include define-font('Roboto', normal, 16px, var(--main-black-color))
+            opacity: 0.6
+
+          .info-container__row_value
+            flex: 1
+            max-width: 180px;
+            margin-left: 12px
+            @include define-font('Roboto', normal, 16px, var(--main-black-color))
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+      .info-container:first-child
+        margin-right: 16px
+
+  .copy-icon 
+    height: 16px
+    width: 16px
+    margin-left: 8px
+    background-image: url('../../assets/svg/copy-icon-disabled.svg')
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    opacity: 0.5
+    cursor: pointer
+    transition: var(--main-transition)
+
+
+  .copy-icon:hover 
+    background-image: url('../../assets/svg/copy-icon.svg')
+    opacity: 1
+
+.m-info-page__btn-block-info
+  @include reset-button
+  @include display-flex(center, flex-start)
+  @include define-font('Gilroy', bold, 14px, rgba(62, 68, 91, 0.3))
+  position: absolute
+  top: 68px
+  right: 25px
+  display: none
+  & svg
+    margin-left: 10px
+
+  .info-table__table-scroll-wrapper
+    flex: 1
+
+@media (min-width: 670px) and (max-width: 1400px)
+  .info-page
+    padding: 25px
+  // .info-table__top-holders
+  //   flex-direction: column
+  // .info-table__top-holders_chart
+    // padding: 30px 0 50px
+    // min-width: 500px
+  .info-table__top-holders_table
+    max-width: 100%
+  .m-info-page__btn-block-info
+    display: flex
+  .info-top-row__block-info
+    position: absolute
+    top: 90px
+    right: 25px
+    flex-direction: column
+    width: 100%
+    max-width: 400px !important
+    padding: 25px
+    background: #FFFFFF
+    box-shadow: 0px 1.4945px 1.53979px rgba(0, 0, 0, 0.02), 0px 4.13211px 4.25733px rgba(0, 0, 0, 0.025), 0px 9.94853px 10.25px rgba(0, 0, 0, 0.03), 0px 33px 34px rgba(0, 0, 0, 0.05)
+    border-radius: 8px
+    transition-property: opacity, transform
+    transition: 300ms cubic-bezier(0, 0, 0.2, 1)
+    transform: translateY(20px)
+    opacity: 0
+    pointer-events: none
+    z-index: 2
+
+  .info-container
+    margin-right: 0
+
+  .info-page .info-top-row .info-top-row__block-info .info-container:first-child
+    margin-right: 0
+
+  .info-container--last
+    margin-top: 30px
+  .info-container__row_parametr span
+    @include define-font('Gilroy', 500, 16px, rgba(62, 68, 91, 0.6))
+
+  .info-container__row_value span
+    @include define-font('Gilroy', 500, 16px, #333)
+
+@media (min-width: 670px) and (max-width: 1130px)
+  .info-table__top-holders
+    flex-direction: column
+    .chart-container
+      min-width: 450px
+      margin-bottom: 40px
+
+@media (max-width: 670px)
+  .info-page
+    padding: 12px 0
+
+  .info-page .info-top-row
+    width: 100vw;
+    overflow: scroll;
+    box-shadow: var(--main-card-shadow)
+
+  .info-page .info-top-row .info-top-row__load-card
+    height: 95px
+    width: 100%
+    min-width: 435px;
+    margin-right: 0
+    padding: 12px
+    border-radius: 0
+    overflow-x: auto
+
+  .info-page .info-top-row .info-top-row__load-card .info-top-row__load-card_item .chips-title span
+    font-size: 12px
+
+  .resource-row .resource-row__load
+    height: 33px
+    width: 33px
+
+  .resource-row .resource-row__info span:first-child
+    font-size: 16px
+
+  .resource-row .resource-row__info span:last-child
+    font-size: 12px
+
+  .info-table
+    width: 100vw
+    overflow: hidden
+
+  .info-table__tabs-scroll-wrapper
+    position: relative
+    width: 100vw
+    overflow-x: auto
+    transform: translateY(3px)
+    z-index: 3
+
+  .info-table .info-table__tabs-row
+    min-width: 465px
+    padding: 0 24px
+
+  .info-table .info-table__tabs-row .info-table__tabs-row_tab
+    font-size: 14px
+
+  .info-table .info-table__tabs-row .info-table__tabs-row_tab.active-tab::after
+    bottom: 0
+
+  .info-table__top-holders
+    flex-direction: column
+    padding: 12px
+    border-radius: 0
+
+  // .info-table__top-holders_chart .chart-container .chart-label-container
+  //   fill-opacity: 1
+
+  // .info-table__top-holders_table
+  //   max-width: 100%
+
+  .m-info-page__btn-block-info
+    display: flex
+
+  .info-top-row__block-info
+    flex-direction: column
+    position: absolute
+    top: 90px
+    right: 8px
+    width: calc( 100% - 16px )
+    max-width: 400px !important
+    margin-left: 8px
+    padding: 25px
+    background: #FFFFFF
+    box-shadow: 0px 1.4945px 1.53979px rgba(0, 0, 0, 0.02), 0px 4.13211px 4.25733px rgba(0, 0, 0, 0.025), 0px 9.94853px 10.25px rgba(0, 0, 0, 0.03), 0px 33px 34px rgba(0, 0, 0, 0.05)
+    border-radius: 8px
+    transition-property: opacity, transform
+    transition: 300ms cubic-bezier(0, 0, 0.2, 1)
+    transform: translateY(20px)
+    opacity: 0
+    pointer-events: none
+    z-index: 5
+
+  .info-top-row__block-info:hover
+    opacity: 1
+    transform: translateY(0px)
+    pointer-events: auto
+
+  .info-container
+    margin-right: 0
+
+  .info-container--last
+    margin-top: 30px
+
+  .info-container__row_parametr span
+    @include define-font('Gilroy', 500, 16px, rgba(62, 68, 91, 0.6))
+
+  .info-container__row_value span
+    @include define-font('Gilroy', 500, 16px, #333)
+
+  .info-table__top-holders_chart .chart-container
+    height: 180px
+    width: auto
+    min-width: unset
+    margin-bottom: 20px
+
+  .info-table__top-holders_chart .chart-container .chart-container__label
+    top: calc(50% - 71px)
+    left: calc(50% - 71px)
+    height: 142px
+    width: 142px
+    border: 15px solid #EBEBEA
+  .info-table__top-holders_chart .chart-container .chart-container__label span
+    // max-width: 65px
+    font-size: 14px
+
+  // .info-table__top-holders_chart .chart-container .chart-label-percent
+  //   font-size: 14px
+  
+  // .info-table__top-holders_chart .chart-container .chart-label-text
+  //   font-size: 12px
+
+  .info-table__table-scroll-wrapper
+    overflow: auto
+
+  .info-table__top-holders_table,
+  .info-table__top-staked,
+  .info-table__top-unstaked
+    min-width: 570px
+
+  .info-table__top-ram
+    min-width: 450px
+
+  .info-table__top-holders .info-table__top-holders_table .info-table__top-holders_table_title-row,
+  .info-table__top-staked .info-table__top-staked_table .info-table__top-staked_table_title-row,
+  .info-table__top-unstaked .info-table__top-unstaked_table .info-table__top-unstaked_table_title-row,
+  .info-table__top-ram .info-table__top-ram_table .info-table__top-ram_table_title-row
+    padding: 0
+
+  .info-table__top-holders .info-table__top-holders_table .info-table__top-holders_table_content .info-table__top-holders_table_row,
+  .info-table__top-staked .info-table__top-staked_table .info-table__top-staked_table_content .info-table__top-staked_table_row,
+  .info-table__top-unstaked .info-table__top-unstaked_table .info-table__top-unstaked_table_content .info-table__top-unstaked_table_row,
+  .info-table__top-ram .info-table__top-ram_table .info-table__top-ram_table_content .info-table__top-ram_table_row
+    padding: 0
+    border-bottom: 1px solid rgba(62, 68, 91, 0.1)
+    border-radius: 0
+  
+  .info-table__top-holders_table .info-table__top-holders_table_content .info-table__top-holders_table_row::after,
+  .info-table__top-staked_table .info-table__top-staked_table_content .info-table__top-staked_table_row::after,
+  .info-table__top-unstaked_table .info-table__top-unstaked_table_content .info-table__top-unstaked_table_row::after,
+  .info-table__top-ram_table .info-table__top-ram_table_content .info-table__top-ram_table_row::after
+    display: none
+
+  .info-table .info-table__table_pagination

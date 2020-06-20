@@ -1,92 +1,51 @@
 {
-    "name": "stinger-explorer",
-    "version": "1.1.0",
-    "license": "MIT",
-    "author": "block.one",
-    "repository": "https://github.com/cbsone/stinger-explorer",
-    "contributors": [],
-    "description": "A full web application to communicate with Stinger blockchain in a local development environment",
+    "name": "cbs-wallet",
+    "version": "0.1.0",
+    "private": true,
     "dependencies": {
-        "@eosio-toppings/api-eosio-compiler": "1.0.0",
-        "@eosio-toppings/api-postgres-plugin": "1.1.0",
-        "@eosio-toppings/api-rpc": "1.1.0",
-        "@eosio-toppings/docker-eosio-nodeos": "1.0.0",
-        "@eosio-toppings/docker-ship": "1.1.0",
-        "chalk": "2.4.2",
-        "cross-spawn": "6.0.5",
-        "dotenv": "^7.0.0",
-        "express": "^4.16.4",
-        "open": "^6.3.0",
-        "pm2": "^3.5.0",
-        "reactstrap": "^8.4.1",
-        "socket.io-client": "^2.2.0"
-    },
-    "bin": {
-        "eosio-explorer": "./cli.sh"
+        "@amcharts/amcharts4": "^4.9.24",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.3.2",
+        "@testing-library/user-event": "^7.1.2",
+        "body-scroll-lock": "^3.0.2",
+        "bootstrap": "^4.5.0",
+        "classnames": "^2.2.6",
+        "dateformat": "^3.0.3",
+        "eosjs": "^20.0.3",
+        "eosjs-ecc": "^4.0.7",
+        "js-salsa20": "^1.0.0",
+        "node-sass": "^4.14.1",
+        "qrcode.react": "^1.0.0",
+        "react": "^16.13.1",
+        "react-bootstrap": "^1.0.1",
+        "react-copy-to-clipboard": "^5.0.2",
+        "react-dom": "^16.13.1",
+        "react-feather": "^2.0.8",
+        "react-notify-toast": "^0.5.1",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.1",
+        "react-syntax-highlighter": "^12.2.1",
+        "uniqid": "^5.2.0"
     },
     "scripts": {
-        "prestart": "MODE=development node serve.js &",
-        "start": "react-app-rewired start",
-        "start-ui": "react-app-rewired start",
-        "build": "react-app-rewired build",
-        "postbuild": "react-snap",
-        "test": "react-app-rewired test --env=jsdom",
-        "eject": "react-scripts eject",
-        "serve": "node pm2.js",
-        "serve-clear": "CLEARBROWSERSTORAGE=true node pm2.js",
-        "eosio-explorer": "./cli.sh"
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ],
-    "devDependencies": {
-        "@coreui/coreui": "^2.1.8",
-        "@coreui/react": "^2.1.5",
-        "axios": "^0.18.0",
-        "cogo-toast": "^1.0.4",
-        "connected-react-router": "^6.3.2",
-        "eosjs-ecc": "^4.0.4",
-        "eosjs-keygen": "^1.3.2",
-        "font-awesome": "^4.7.0",
-        "http-proxy-middleware": "^0.19.1",
-        "js-cookie": "^2.2.0",
-        "monaco-editor-webpack-plugin": "^1.7.0",
-        "node-sass": "^4.11.0",
-        "react": "^16.8.4",
-        "react-app-rewire-styled-components": "^3.0.2",
-        "react-app-rewired": "^2.1.1",
-        "react-dom": "^16.8.4",
-        "react-dropzone": "^10.0.4",
-        "react-gtm-module": "^2.0.4",
-        "react-loadable": "^5.5.0",
-        "react-monaco-editor": "^0.25.1",
-        "react-redux": "^7.0.2",
-        "react-router": "^5.0.0",
-        "react-router-dom": "^5.0.0",
-        "react-scripts": "^2.1.5",
-        "react-snap": "^1.23.0",
-        "redux": "^4.0.1",
-        "redux-observable": "^1.1.0",
-        "redux-persist": "^5.10.0",
-        "redux-persist-transform-filter": "^0.0.18",
-        "redux-thunk": "^2.3.0",
-        "rxjs": "^6.4.0",
-        "styled-components": "^4.1.3",
-        "terminal-in-react": "^4.3.1"
+    "eslintConfig": {
+        "extends": "react-app"
     },
-    "files": [
-        "build",
-        "helpers",
-        "routers",
-        "scripts",
-        ".env",
-        "cli.sh",
-        "config.file",
-        "init_config.file",
-        "pm2.js",
-        "serve.js"
-    ]
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }

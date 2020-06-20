@@ -1,0 +1,35 @@
+@import "../../../assets/sass/mixins"
+
+.component-search-input
+  width: 100%
+  max-width: 400px
+  position: relative
+
+  & input
+    width: 100%
+    height: 40px
+    background-color: rgba(52, 48, 39, 0.05)
+    outline: none
+    border: none
+    border-radius: 50px
+    @include define-font('Roboto', 400, 16px, rgba(62, 68, 91, 1))
+    padding-left: 45px
+    padding-right: 15px
+
+    &::-webkit-input-placeholder
+      color: rgba(62, 68, 91, 0.5)
+
+
+.component-search-input__icon
+  position: absolute
+  top: 50%
+  left: 15px
+  display: flex
+  transform: translateY(-50%)
+
+@media (max-width: 1000px)
+  .component-search-input
+    input
+      @include define-font('Gilroy', 500, 12px, rgba(62, 68, 91, 1))
+
+

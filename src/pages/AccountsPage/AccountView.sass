@@ -1,0 +1,241 @@
+@import "../../assets/sass/mixins"
+
+.acc-view-container
+  display: flex
+  align-items: stretch
+  height: calc( 100% - 40px )
+  width: 100%
+  padding: 40px
+
+  .account-stats
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    width: 464px
+
+  .account-info
+    display: flex
+    align-items: center
+    margin-bottom: 32px
+    padding-left: 16px
+
+  .account-info__image
+    height: 52px
+    width: 52px
+    margin-right: 12px
+    background-position: center
+    background-size: contain
+    background-repeat: no-repeat
+    background-color: rgba(90, 90, 90, 0.15)
+    border: 1px solid rgba(52, 48, 39, 0.1)
+    border-radius: 50%
+
+  .account-info__container
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 52px
+
+  .account-info__container_info
+    display: flex
+    align-items: center
+
+  .account-info__container_info_link
+    color: #9da0ac
+    font-family: 'Roboto'
+    font-size: 16px
+    line-height: 19px
+
+  .account-keys
+    display: flex
+    flex-direction: column
+    margin: 40px 0
+    padding-left: 16px
+
+    .account-keys__row
+      display: flex
+      align-items: center
+
+      .account-keys__row_label
+        min-width: 128px
+        margin-right: 12px
+        @include define-font('Roboto', normal, 16px, var(--main-black-color))
+        opacity: 0.6
+
+      .account-keys__row_value
+        margin-left: 12px
+        @include define-font('Roboto', normal, 16px, var(--main-black-color))
+
+    .account-keys__row:first-child
+      margin-bottom: 16px
+
+  .account-info__container_icon
+    height: 16px
+    width: 16px
+    margin-left: 8px
+    background-image: url('../../assets/svg/copy-icon-disabled.svg')
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+    opacity: 0.5
+    cursor: pointer
+    transition: var(--main-transition)
+
+  .account-info__container_icon:hover
+    background-image: url('../../assets/svg/copy-icon.svg')
+    opacity: 1
+
+  .account-balance
+    display: flex
+    align-items: stretch
+    justify-content: space-between
+    margin-bottom: 16px
+    padding: 32px 24px 32px 40px
+    background: #FFFFFF
+    box-shadow: var(--main-card-shadow)
+    border-radius: 8px
+
+    .account-balance__container
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      .account-balance__container_balance
+        color: var(--main-black-color)
+        font-family: 'Gilroy'
+        font-weight: bold
+        font-size: 46px
+        line-height: 56px
+
+      .account-balance__container_balance_currency
+        color: #9fa2ae
+        font-size: 38px
+
+      .account-balance__container_sub-balance
+        display: flex
+        align-items: center
+        margin-bottom: 8px
+        opacity: 0.6
+
+      .account-balance__container_sub-balance > span
+        margin-left: 8px
+
+      .sub-balance-dot
+        margin-left: 13px
+        margin-right: 21px
+
+    .account-balance__icon
+      height: 41px
+      width: 41px
+      margin-top: 11px
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+
+    .account-balance__icon-yellow
+      background-image: url('../../assets/img/balance-icon-yellow.png')
+
+    .account-balance__icon-blue
+      background-image: url('../../assets/img/balance-icon-blue.png')
+
+  .account-resources
+    margin-top: 40px
+    padding: 24px
+    background: #FFFFFF
+    box-shadow: var(--main-card-shadow)
+    border-radius: 8px
+    position: relative
+
+    .account-resources__arrow
+      position: absolute
+      top: 22px
+      right: 30px
+      display: none
+
+    .account-resources__title
+      opacity: 0.5
+
+    .account-resources__container
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      margin-top: 8px
+      overflow: hidden
+
+      .resource-row
+        display: flex
+        align-items: center
+        justify-content: flex-start
+        margin: 8px 0
+
+      .resource-row__name
+        width: 92px
+
+      .resource-row__load
+        margin-right: 16px
+
+      .resource-row__info
+        display: flex
+        flex-direction: column
+
+      .resource-row__info > span:last-child
+        color: var(--main-black-color)
+        font-family: 'Roboto'
+        font-style: normal
+        font-weight: normal
+        font-size: 16px
+        line-height: 19px
+        opacity: 0.6
+
+
+    .account-resources__info-container
+      display: flex
+      flex-direction: column
+      margin-top: 52px
+
+      .account-resources__info-container_row
+        display: flex
+        align-items: center
+        margin-bottom: 16px
+
+        .info-container_row_label
+          min-width: 128px
+          margin-right: 12px
+          @include define-font('Roboto', normal, 16px, var(--main-black-color))
+          opacity: 0.6
+
+        .info-container_row_value
+          margin-left: 12px
+          @include define-font('Roboto', normal, 16px, var(--main-black-color))
+
+@media (max-width: 1350px)
+  .acc-view-container
+    flex-direction: column
+  .balances-wrapper-container
+    width: 100%
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+
+  .account-balance
+    min-width: 450px
+
+  .account-balance--cbs
+    margin-right: 20px
+
+@media (max-width: 1000px)
+  .acc-view-container
+    padding: 20px 0
+  .account-stats
+    width: 100% !important
+  .account-stats__column
+    width: 100%
+
+  .balances-wrapper
+    width: 100vw
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+  .balances-wrapper-container
+    padding: 0 20px
+

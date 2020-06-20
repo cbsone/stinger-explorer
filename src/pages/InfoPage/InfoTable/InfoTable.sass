@@ -1,0 +1,136 @@
+@import "../../../assets/sass/mixins"
+
+.info-table
+  display: flex
+  flex-direction: column
+  min-height: 540px
+  margin-top: 72px
+
+  .info-table__tabs-row
+    display: flex
+    align-items: center
+    padding-left: 24px
+
+    .info-table__tabs-row_tab
+      position: relative
+      margin-right: 40px
+      padding-bottom: 25px
+      @include define-font('Gilroy', bold, 20px, var(--main-black-color))
+      opacity: 0.3
+      cursor: pointer
+      transition: var(--main-transition)
+
+    .info-table__tabs-row_tab:last-child
+      margin-right: 0
+
+    .info-table__tabs-row_tab.active-tab
+      opacity: 1
+    
+    .info-table__tabs-row_tab.active-tab::after
+      content: ""
+      position: absolute
+      left: 0
+      bottom: -3px
+      height: 0
+      width: 100%
+      border-bottom: 3px solid #F8A303
+      border-bottom-left-radius: 3px
+      border-bottom-right-radius: 3px
+      z-index: 2
+
+  .info-table__swap-wraper
+    flex: 1
+    position: relative
+    z-index: 1
+    width: 100%
+
+    .info-table__top-holders, .info-table__top-staked, .info-table__top-unstaked, .info-table__top-ram
+      position: absolute
+      overflow: hidden
+      transition: var(--main-transition)
+
+  .info-table__table_pagination
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 138px
+    margin: 24px auto 8px
+    @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+    > *
+      opacity: 0.6
+      cursor: pointer
+      transition: var(--main-transition)
+
+    > *:hover
+      opacity: 1
+
+.info-table.active-top-holders
+
+  .info-table__top-holders
+    position: relative
+    left: 0
+    opacity: 1
+
+  .info-table__top-staked, .info-table__top-unstaked, .info-table__top-ram
+    left: 100%
+    top: 0
+    width: 0
+    opacity: 0
+    
+.info-table.active-top-staked
+
+  .info-table__top-staked
+    position: relative
+    left: 0
+    opacity: 1
+
+  .info-table__top-holders
+    left: -100%
+    top: 0
+    width: 0
+    opacity: 0
+
+  .info-table__top-unstaked, .info-table__top-ram
+    left: 100%
+    top: 0
+    width: 0
+    opacity: 0
+
+.info-table.active-top-unstaked
+
+  .info-table__top-unstaked
+    position: relative
+    left: 0
+    opacity: 1
+
+  .info-table__top-holders, .info-table__top-staked
+    left: -100%
+    top: 0
+    width: 0
+    opacity: 0
+
+  .info-table__top-ram
+    left: 100%
+    top: 0
+    width: 0
+    opacity: 0
+
+.info-table.active-top-ram
+
+  .info-table__top-ram
+    position: relative
+    left: 0
+    opacity: 1
+
+  .info-table__top-holders, .info-table__top-staked, .info-table__top-unstaked
+    left: -100%
+    top: 0
+    width: 0
+    opacity: 0
+
+
+@import "./HoldersTable"
+@import "./StakedTable"
+@import "./UnstakedTable"
+@import "./RAMTable"

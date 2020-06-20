@@ -1,0 +1,135 @@
+@import "../../../assets/sass/mixins"
+
+.component-blocks-table
+  width: 100%
+  display: flex
+  flex-direction: column
+
+.component-blocks-table__col
+  width: 100%
+  // overflow: hidden
+  & p
+    width: 100%
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+  &--block-num
+    flex: 1
+    margin-right: 24px
+    // max-width: 70px
+    // margin-right: 20px
+  &--block-id
+    flex: 7
+    margin-right: 24px
+    max-width: 500px
+    // margin-right: 40px
+    p
+      width: 90%
+  &--transaction-num
+    flex: 2
+    margin-right: 24px
+    // max-width: 170px
+    // margin-right: 40px
+    & p
+      text-align: right
+  &--time
+    flex: 3
+    // max-width: 175px
+
+
+.component-blocks-table__header
+  width: 100%
+  margin-bottom: 8px
+  padding: 0 24px
+  @include display-flex(flex-end, flex-start)
+  & p
+    @include define-font('Gilroy', bold, 14px, #3E445B)
+    opacity: 0.4
+
+.component-blocks-table__body
+  flex: 1
+  display: flex
+  flex-direction: column
+
+.component-blocks-table__item
+  position: relative
+  width: 100%
+  height: 40px
+  padding: 0 24px
+  @include display-flex(center, flex-start)
+  border-radius: 8px;
+  cursor: pointer
+  transition: var(--main-transition)
+
+  & p
+    @include define-font('Roboto', 400, 14px, #3E445B)
+
+    & a
+      text-decoration: none
+      color: inherit
+
+  & .component-blocks-table__col--block-id
+    @include display-flex(center, space-between)
+    & button
+      height: 16px
+      width: 16px
+      margin-left: 10px
+
+.component-blocks-table__item:hover
+  background: rgba(52, 48, 39, 0.05)
+
+.component-blocks-table__item::after
+  content: ""
+  position: absolute
+  left: 24px
+  bottom: 0
+  height: 1px
+  width: calc(100% - 48px)
+  background-color: #3E445B
+  opacity: 0.1
+
+.component-blocks-table__container
+  width: 100%
+
+.component-blocks-table__pagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 138px
+  margin: 24px auto 8px
+  @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+  > *
+    opacity: 0.6
+    cursor: pointer
+    transition: var(--main-transition)
+
+  > *:hover
+    opacity: 1
+
+@media (min-width: 1000px) and (max-width: 1120px)
+  .component-blocks-table__col--block-id
+    max-width: 400px
+
+@media (min-width: 770px) and (max-width: 999px)
+  .component-blocks-table__col--block-id
+    max-width: 300px
+
+@media (min-width: 690px) and (max-width: 769px)
+  .component-blocks-table__col--block-id
+    max-width: 200px
+
+@media (max-width: 689px)
+  .component-blocks-table__col--block-id
+    max-width: 150px
+
+@media (max-width: 1000px)
+  .component-blocks-table__container
+    width: 100vw
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+
+  .component-blocks-table__header, .component-blocks-table__body
+    min-width: 600px
+
+

@@ -1,0 +1,378 @@
+@import "../../../assets/sass/mixins"
+
+.acc-view-table
+  flex: 1
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  width: 100%
+  max-width: 744px
+  margin: 0 56px
+
+  .acc-view-table__top-row
+    padding-left: 40px
+    margin-bottom: 24px
+
+  .acc-view-table__table-container
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    padding: 32px 20px 40px
+    background: #FFFFFF
+    box-shadow: var(--main-card-shadow)
+    border-radius: 8px
+
+    .acc-view-table__filters
+      display: flex
+      flex-direction: column
+      align-items: stretch
+      margin-bottom: 30px
+      padding: 0 20px
+
+      .filters__title-row
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .filters__title-row_label
+          @include define-font('Gilroy', bold, 14px, var(--main-black-color))
+          letter-spacing: 0.04em
+
+        .filters__title-row_buttons
+          display: flex
+          align-items: center
+
+          .filter-title-button
+            display: flex
+            align-items: center
+            cursor: pointer
+            transition: var(--main-transition)
+            user-select: none
+
+            .filter-title-button__icon
+              height: 24px
+              width: 24px
+              margin-right: 4px
+              background-size: contain
+              background-position: center
+              background-repeat: no-repeat
+
+            .icon-close
+              background-image: url('../../../assets/svg/close-icon.svg')
+
+            .icon-refresh
+              background-image: url('../../../assets/svg/refresh-icon.svg')
+
+            .filter-title-button__label
+              @include define-font('Gilroy', bold, 14px, var(--main-black-color))
+              letter-spacing: 0.04em
+
+          .filter-title-button:first-child
+            margin-right: 20px
+
+          .filter-title-button:hover
+              transform: translateY(-2px)
+            
+          .filter-title-button:active
+              transform: translateY(2px)
+
+    .filters__filter-row
+      display: flex
+      align-items: center
+      margin-bottom: 24px
+      padding: 0 20px
+
+      .filters__filter-row_label
+        width: 140px
+        @include define-font('Roboto', normal, 16px, var(--main-black-color))
+        opacity: 0.6
+
+      .filter-categiry-radio
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 35px
+        margin-left: 12px
+        padding: 0 18px
+        background-color: rgba(52, 48, 39, 0.05)
+        border-radius: 17.5px
+        @include define-font('Gilroy', 500, 16px, #3E445B80)
+        cursor: pointer
+        transition: var(--main-transition)
+        white-space: nowrap
+
+      .filter-categiry-radio.categiry-radio-active
+        background-color: #F8A303
+        color: #3E445B
+
+      .filter-input
+        position: relative
+        height: 42px
+        width: 100%
+        max-width: 244px
+        margin-left: 16px
+        border: 1px solid rgba(52, 48, 39, 0.1)
+        border-radius: 21px
+        overflow: hidden
+
+        input
+          height: 100%
+          width: 100%
+          margin: 0
+          padding: 11px 45px
+          border: none
+          background-color: rgba(52, 48, 39, 0.05)
+          @include define-font('Roboto', normal, 16px, #3E445B)
+          transition: var(--main-transition)
+
+        input:focus
+          background-color: #ffffff
+          outline: none
+
+          + .filter-input__clear-icon
+            opacity: 1
+
+        .filter-input__search-icon
+          position: absolute
+          left: 14px
+          top: 13px
+          height: 15px
+          width: 15px
+          opacity: 0.5
+          background-image: url('../../../assets/svg/search-icon.svg')
+          background-size: contain
+          background-position: center
+          background-repeat: no-repeat
+          
+        .filter-input__clear-icon
+          position: absolute
+          right: 13px
+          top: 11px
+          height: 20px
+          width: 20px
+          background-image: url('../../../assets/svg/close-circular-icon.svg')
+          background-size: contain
+          background-position: center
+          background-repeat: no-repeat
+          cursor: pointer
+          opacity: 0
+          transition: var(--main-transition)
+
+        .filter-input__clear-icon:hover
+          transform: scale(1.15)
+
+        .filter-input__clear-icon:active
+          transform: scale(0.9)
+
+    .acc-view-table__table-container_titles
+      display: flex
+      align-items: center
+      margin-top: 16px
+      margin-bottom: 8px
+      padding: 0 20px
+      opacity: 0.5
+
+      > div:nth-child(1)
+        flex: 2
+        max-width: 88px
+        margin-right: 8px
+
+      > div:nth-child(2)
+        flex: 3
+        max-width: 138px
+        margin-right: 8px
+
+      > div:nth-child(3)
+        flex: 4
+        max-width: 146px
+        margin-right: 8px
+
+      > div:nth-child(4)
+        flex: 8
+        max-width: 272px
+
+    .table-container__table-row
+      display: flex
+      align-items: center
+      position: relative
+      height: 40px
+      padding: 0 20px
+      border-radius: 8px
+      @include define-font('Roboto', normal, 14px, var(--main-black-color))
+      transition: var(--main-transition)
+
+      > div:nth-child(1)
+        flex: 2
+        max-width: 88px
+        margin-right: 8px
+
+      > div:nth-child(2)
+        flex: 3
+        max-width: 138px
+        margin-right: 8px
+
+      > div:nth-child(3)
+        flex: 4
+        display: flex
+        max-width: 146px
+        margin-right: 8px
+
+      > div:nth-child(4)
+        flex: 8
+        max-width: 272px
+
+      .table-container__table-row_date-time
+        > span
+          color: #9fa2ae
+
+      .table-container__table-row_action
+        display: flex
+        align-items: center
+        justify-content: center
+        height: 27px
+        padding: 0 8px
+        background-color: rgba(52, 48, 39, 0.05)
+        border-radius: 13.5px
+        @include define-font('Gilroy', 500, 16px, #3E445B80)
+        white-space: nowrap
+        transition: var(--main-transition)
+
+      .table-container__table-row_data
+        display: flex
+        align-items: center
+        height: 100%
+        cursor: pointer
+
+        .table-container__table-row_data_key
+          display: inline-block
+          max-width: 130px
+          margin-left: 4px
+          opacity: 0.5
+          overflow: hidden
+          text-overflow: ellipsis
+
+      .table-container__table-row_data:hover
+        > span
+          color: #F8A303
+          opacity: 1
+          transition: var(--main-transition)
+
+        + .table-container__table-row_data_popup
+          top: 100%
+          height: 202px
+          padding: 16px
+          opacity: 1
+          transition: all .15s ease-in-out, padding 0s 0s, height 0s 0s
+
+      .table-container__table-row_data_popup
+        display: flex
+        flex-direction: column
+        position: absolute
+        right: -16px
+        top: calc( 100% + 10px)
+        height: 0px
+        opacity: 0
+        max-width: 630px
+        padding: 0
+        background: #FFFFFF
+        box-shadow: var(--main-card-shadow)
+        border-radius: 8px
+        overflow: hidden
+        transition: all .15s ease-in-out, padding 0s .15s, height 0s .15s
+        z-index: 1
+
+        div:first-child
+          color: #F8A303
+          padding: 0
+
+        div:nth-child(n + 2)
+          padding-left: 16px
+
+          span:last-child
+            opacity: 0.5
+            word-break: break-all
+
+    .table-container__table-row::after
+      content: ""
+      position: absolute
+      left: 24px
+      bottom: 0
+      height: 1px
+      width: calc(100% - 48px)
+      background-color: #3E445B
+      opacity: 0.1
+
+    .table-container__table-row:hover
+      background: rgba(52, 48, 39, 0.05)
+
+  .table-container__table-row:nth-last-child(-n + 4)
+    .table-container__table-row_data_popup
+      top: -222px
+
+    .table-container__table-row_data:hover
+      + .table-container__table-row_data_popup
+        top: -202px
+
+  .acc-view-table__pagination
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 138px
+    margin: 24px auto 8px
+    @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+    > *
+      opacity: 0.6
+      cursor: pointer
+      transition: var(--main-transition)
+
+    > *:hover
+      opacity: 1
+
+.acc-view-table__table-container__content
+  width: 100%
+
+.filters__filter-row__options, .filters__filter-row__inputs
+  display: flex
+
+@media (max-width: 1350px)
+  .acc-view-table
+    margin: 20px 0 0
+
+@media (max-width: 1000px)
+  .acc-view-table
+    padding: 0
+    max-width: 100% !important
+  .acc-view-table__table-container
+    padding: 20px 0 !important
+
+  .acc-view-table__table-container__content
+    width: 100vw
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+  .acc-view-table__table-container_titles, .acc-view-table__table-container_body
+    min-width: 700px
+
+@media (max-width: 750px)
+  .filters__filter-row
+    flex-direction: column
+    align-items: flex-start !important
+    padding: 0 !important
+
+  .filters__filter-row_label
+    padding-left: 15px
+
+  .filters__filter-row__options
+    margin-top: 20px
+    width: 100vw
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+  .filters__filter-row__inputs
+    margin-top: 20px
+    width: 100%
+    padding: 0 15px
+  .filter-input:first-child
+    margin-left: 0 !important
+

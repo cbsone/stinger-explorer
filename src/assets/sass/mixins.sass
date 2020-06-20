@@ -1,0 +1,22 @@
+@mixin display-flex($align-items: center, $justify-content: center)
+  display: flex
+  align-items: $align-items
+  justify-content: $justify-content
+
+@mixin define-font($font-family, $font-weight, $font-size, $color)
+  font-family: $font-family, serif
+  font-weight: $font-weight
+  font-size: $font-size
+  color: $color
+
+@mixin reset-button
+  background: transparent
+  outline: none
+  padding: 0
+  margin: 0
+  border: none
+  cursor: pointer
+
+@mixin tooltip-shadow
+  box-shadow: 0px 1.4945px 1.53979px rgba(0, 0, 0, 0.02), 0px 4.13211px 4.25733px rgba(0, 0, 0, 0.025), 0px 9.94853px 10.25px rgba(0, 0, 0, 0.03), 0px 33px 34px rgba(0, 0, 0, 0.05);
+

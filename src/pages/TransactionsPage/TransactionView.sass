@@ -1,0 +1,203 @@
+@import "../../assets/sass/mixins"
+
+.transaction-view-page
+  display: flex
+  flex-direction: column
+  height: calc( 100% - 40px )
+  width: 100%
+  padding: 32px
+  overflow: hidden
+
+  .transaction-view-page__title
+    margin-left: 24px
+    margin-bottom: 24px
+    @include define-font('Gilroy', bold, 20px, #3E445B)
+
+  .transaction-view-page__info
+    display: flex
+    flex-direction: column
+    margin-left: 24px
+    margin-bottom: 50px
+    
+    .transaction-view-page__info_row
+      display: flex
+      align-items: center
+      margin-bottom: 12px
+      @include define-font('Roboto', normal, 16px, #3E445B)
+
+      .info-name
+        min-width: 132px
+        margin-right: 12px
+        opacity: 0.6
+
+      .info-value
+        margin: 0 12px
+
+      .copy-icon
+        height: 16px
+        width: 16px
+        margin-left: 8px
+        background-image: url('../../assets/svg/copy-icon-disabled.svg')
+        background-position: center
+        background-size: cover
+        background-repeat: no-repeat
+        opacity: 0.5
+        cursor: pointer
+        transition: var(--main-transition)
+
+      .copy-icon:hover
+        background-image: url('../../assets/svg/copy-icon.svg')
+        opacity: 1
+
+    .transaction-view-page__info_row:last-child
+      margin-bottom: 0
+
+  .transaction-view-page__panels
+    flex: 1
+    display: flex
+    flex-direction: column
+    max-width: 900px
+
+    .panels__title-row
+      display: flex
+      margin-left: 24px
+
+      .panels__title-row_tab
+        position: relative
+        margin-right: 40px
+        padding-bottom: 24px
+        @include define-font('Gilroy', bold, 20px, #3E445B)
+        opacity: 0.5
+        cursor: pointer
+        transition: var(--main-transition)
+
+      .panels__title-row_tab.title-active
+        opacity: 1
+
+      .panels__title-row_tab.title-active::after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: -3px
+        height: 0
+        width: 100%
+        border-bottom: 3px solid #F8A303
+        border-bottom-left-radius: 3px
+        border-bottom-right-radius: 3px
+        z-index: 2
+
+    .panels__cards-wrapper
+      flex: 1
+      display: flex
+      position: relative
+
+      .panels__card
+        display: flex
+        flex-direction: column
+        position: absolute
+        width: 100%
+        min-height: 250px
+        padding: 32px
+        background: #FFFFFF
+        box-shadow: var(--main-card-shadow)
+        border-radius: 8px
+        overflow: hidden
+        transition: var(--main-transition)
+
+        .actions-table
+          flex: 1
+          display: flex
+          flex-direction: column
+
+        .actions-table__title-row
+          display: flex
+          align-items: center
+          width: 100%
+          margin-bottom: 8px
+          @include define-font('Gilroy', bold, 14px, #3E445B)
+          letter-spacing: 0.04em;
+          opacity: 0.5
+
+          > div:nth-child(1)
+            flex: 1
+            margin-right: 8px
+            
+          > div:nth-child(2)
+            flex: 4
+            margin-right: 8px
+            
+          > div:nth-child(3)
+            flex: 3
+            margin-right: 8px
+
+        .actions-table__row
+          display: flex
+          align-items: center
+          height: 40px
+          width: 100%
+          border-bottom: 1px solid rgba(62, 68, 91, 0.1)
+          @include define-font('Roboto', normal, 14px, #3E445B)
+
+          > div:nth-child(1)
+            flex: 1
+            margin-right: 8px
+            
+          > div:nth-child(2)
+            flex: 4
+            margin-right: 8px
+            
+          > div:nth-child(3)
+            flex: 3
+            margin-right: 8px
+
+    .panels__cards-wrapper.show-raw
+
+      .raw-card
+        left: 0
+        opacity: 1
+
+      .actions-card
+        left: -100%
+        opacity: 0
+
+    .panels__cards-wrapper.show-actions
+
+      .raw-card
+        left: 100%
+        opacity: 0
+
+      .actions-card
+        left: 0
+        opacity: 1
+
+    .actions-table
+      display: flex
+      flex-direction: column
+
+
+    .actions-table-pagination
+      display: flex
+      align-items: center
+      justify-content: space-between
+      width: 138px
+      margin: 24px auto 8px
+      @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+      > *
+        opacity: 0.6
+        cursor: pointer
+        transition: var(--main-transition)
+
+      > *:hover
+        opacity: 1
+
+@media (max-width: 1000px)
+  .transaction-view-page
+    padding: 20px 0
+  .transaction-view-page__info_row
+    span
+      @include define-font('Gilroy', 500, 12px, var(--main-black-color))
+
+  .panels__title-row_tab
+    font-size: 14px !important
+    padding-bottom: 15px !important

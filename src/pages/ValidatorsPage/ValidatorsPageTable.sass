@@ -1,0 +1,169 @@
+@import "../../assets/sass/mixins"
+
+.component-validators-table
+  flex: 1
+  display: flex
+  flex-direction: column
+
+  .component-validators-table__header
+    margin: 0 0 8px
+    padding: 0 24px
+    @include display-flex(flex-end, flex-start)
+    & span
+      @include define-font('Gilroy', bold, 14px, #3E445B)
+      opacity: 0.4
+
+    > div:nth-child(1)
+      flex: 1
+      min-width: 40px
+      margin-right: 8px
+      
+    > div:nth-child(2)
+      flex: 20
+      // max-width: 240px
+      margin-right: 8px
+      
+    > div:nth-child(3)
+      flex: 2
+      // max-width: 90px
+      margin-right: 8px
+
+    > div:nth-child(4)
+      flex: 2
+      // max-width: 90px
+      margin-right: 8px
+      
+    > div:nth-child(5)
+      flex: 4
+      // max-width: 240px
+      margin-right: 8px
+      
+    > div:nth-child(6)
+      flex: 4
+      // max-width: 240px
+      text-align: right
+
+    .component-validators-table__header_total
+      display: flex
+      align-items: flex-start
+      justify-content: flex-end
+
+      > span:last-child
+        margin-left: 4px
+        font-size: 10px
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+
+  .component-validators-table__body
+    flex: 1
+    display: flex;
+    flex-direction: column;
+
+    .component-validators-table__item
+      position: relative
+      height: 40px
+      width: 100%
+      padding: 0 24px
+      @include display-flex(center, flex-start)
+      border-radius: 8px;
+      transition: var(--main-transition)
+
+      & span
+        @include define-font('Roboto', 400, 14px, var(--main-black-color))
+
+      > div:nth-child(1)
+        flex: 1
+        min-width: 40px
+        margin-right: 8px
+        
+      > div:nth-child(2)
+        flex: 20
+        // max-width: 240px
+        margin-right: 8px
+        
+      > div:nth-child(3)
+        flex: 2
+        // max-width: 90px
+        margin-right: 8px
+
+      > div:nth-child(4)
+        flex: 2
+        // max-width: 90px
+        margin-right: 8px
+        
+      > div:nth-child(5)
+        flex: 4
+        // max-width: 240px
+        margin-right: 8px
+        
+      > div:nth-child(6)
+        flex: 4
+        // max-width: 240px
+        text-align: right
+
+      .component-validators-table__item_profile
+        display: flex
+        align-items: center
+
+        .profile-avatar
+          height: 20px
+          width: 20px
+          margin-right: 8px
+          background-position: center
+          background-size: contain
+          background-repeat: no-repeat
+          background-color: rgba(90, 90, 90, 0.15)
+          border: 1px solid rgba(52, 48, 39, 0.1)
+          border-radius: 50%
+
+      .component-validators-table__item_total-votes
+        display: flex
+        align-items: flex-start
+        justify-content: flex-end
+
+        > span:last-child
+          margin-left: 4px
+          font-size: 10px
+          font-weight: 500
+          transform: translateY(-4px)
+
+    .component-validators-table__item:hover
+      background: rgba(52, 48, 39, 0.05);
+
+    .component-validators-table__item::after
+      content: ""
+      position: absolute
+      left: 24px
+      bottom: 0
+      height: 1px
+      width: calc(100% - 48px)
+      background-color: #3E445B
+      opacity: 0.1
+
+.component-validators-table__pagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 138px
+  margin: 24px auto 8px
+  @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+  > *
+    opacity: 0.6
+    cursor: pointer
+    transition: var(--main-transition)
+
+  > *:hover
+    opacity: 1
+
+.component-validators-table__container
+  width: 100%
+
+@media (max-width: 1000px)
+  .component-validators-table__container
+    width: 100vw
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+  .component-validators-table__header, .component-validators-table__body
+    min-width: 1000px

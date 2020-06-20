@@ -1,0 +1,26 @@
+@import "../../assets/sass/mixins"
+
+.page-accounts
+  display: flex
+  flex-direction: column
+  height: calc( 100% - 40px )
+  width: 100%
+  padding: 25px 30px
+
+.page-accounts__header
+  margin: 0 24px 35px
+  @include display-flex(center, flex-start)
+
+  & h2
+    @include define-font('Gilroy', bold, 20px, #3E445B)
+    margin-right: 40px
+
+@media (max-width: 1000px)
+  .page-accounts
+    padding: 25px 0
+
+  .page-accounts__header
+    flex-direction: column
+    align-items: flex-start
+    margin: 0 0 20px
+    padding: 0 15px

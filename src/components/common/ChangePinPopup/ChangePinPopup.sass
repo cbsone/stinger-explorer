@@ -1,0 +1,62 @@
+@import "../../../assets/sass/mixins"
+
+.change-pin-popup
+  max-width: 460px
+  position: relative
+
+.change-pin-popup__old-password
+  margin-top: 30px
+
+.change-pin-popup__btn-container
+  width: 100%
+  @include display-flex()
+
+.change-pin-popup__btn-next
+  @include reset-button
+  margin: 50px 0 20px
+  background: #5D6171
+  border-radius: 30px
+  box-shadow: 0px 0px 0.892857px rgba(112, 112, 112, 0.12), 0px 1.19048px 1.78571px rgba(112, 112, 112, 0.18), 0px 2.67857px 4.16667px rgba(112, 112, 112, 0.2), 0px 4.7619px 8.92857px rgba(112, 112, 112, 0.3)
+  padding: 12px 32px
+  @include define-font('Gilroy', bold, 14px, #ffffff)
+  transition-property: transform, opacity
+  transition: 300ms cubic-bezier(0, 0, 0.2, 1)
+
+  &--disabled
+    opacity: 0.5
+    pointer-events: none
+
+  &:hover
+    transform: translateY(-5px)
+
+.change-pin-popup__error-text
+  position: absolute
+  bottom: 5px
+  left: 50%
+  transform: translateX(-50%)
+  @include define-font('Roboto', 400, 16px, #EB5757)
+
+.change-pin-popup__new-password
+  height: 0
+  opacity: 0
+  overflow: hidden
+  transition: height 250ms cubic-bezier(0, 0, 0.2, 1), opacity 300ms cubic-bezier(0, 0, 0.2, 1) 300ms
+
+  &--opened
+    opacity: 1
+    height: 90px
+    margin-top: 40px
+
+.change-pin-popup__btn-confirm
+  @include reset-button
+  margin: 40px 0 8px
+  background: linear-gradient(19.39deg, #FFA300 31.27%, #FFD1AA 100%)
+  border-radius: 30px
+  box-shadow: 0px 0px 0.892857px rgba(236, 124, 42, 0.12), 0px 1.19048px 1.78571px rgba(236, 124, 42, 0.18), 0px 2.67857px 4.16667px rgba(236, 124, 42, 0.2), 0px 4.7619px 8.92857px rgba(236, 124, 42, 0.3)
+  padding: 12px 32px
+  @include define-font('Gilroy', bold, 14px, #3E445B)
+  transition-property: transform, opacity
+  transition: 300ms cubic-bezier(0, 0, 0.2, 1)
+
+  &:hover
+    transform: translateY(-5px)

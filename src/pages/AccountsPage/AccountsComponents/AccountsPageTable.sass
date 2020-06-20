@@ -1,0 +1,206 @@
+@import "../../../assets/sass/mixins"
+
+.component-accounts-table
+  flex: 1
+  display: flex
+  flex-direction: column
+
+  .component-accounts-table__header
+    margin: 0 0 8px
+    padding: 0 24px
+    @include display-flex(flex-end, flex-start)
+    & span
+      @include define-font('Gilroy', bold, 14px, #3E445B)
+      opacity: 0.4
+
+    > div:nth-child(1)
+      flex: 2
+      max-width: 158px
+      min-width: 130px
+      margin-right: 8px
+      
+    > div:nth-child(2)
+      flex: 8
+      max-width: 576px
+      // min-width: 502px
+      margin-right: 8px
+      
+    > div:nth-child(3)
+      flex: 3
+      max-width: 172px
+      min-width: 155px
+      margin-right: 8px
+      text-align: right
+      
+    > div:nth-child(4)
+      flex: 3
+      max-width: 172px
+      min-width: 135px
+      margin-right: 8px
+      text-align: right
+      
+    > div:nth-child(5)
+      flex: 3
+      max-width: 172px
+      min-width: 145px
+      text-align: right
+
+  .component-accounts-table__body
+    flex: 1
+    display: flex
+    flex-direction: column
+
+    .component-accounts-table__item
+      position: relative
+      height: 40px
+      width: 100%
+      padding: 0 24px
+      @include display-flex(center, flex-start)
+      border-radius: 8px
+      transition: var(--main-transition)
+
+      & span
+        @include define-font('Roboto', 400, 14px, var(--main-black-color))
+
+      > div:nth-child(1)
+        flex: 2
+        max-width: 158px
+        min-width: 130px
+        margin-right: 8px
+        
+      > div:nth-child(2)
+        flex: 8
+        max-width: 576px
+        margin-right: 8px
+        
+      > div:nth-child(3)
+        flex: 3
+        max-width: 172px
+        min-width: 155px
+        margin-right: 8px
+        text-align: right
+        
+      > div:nth-child(4)
+        flex: 3
+        max-width: 172px
+        min-width: 135px
+        margin-right: 8px
+        text-align: right
+        
+      > div:nth-child(5)
+        flex: 3
+        max-width: 172px
+        min-width: 145px
+        text-align: right
+
+      .component-accounts-table__item_profile
+        display: flex
+        align-items: center
+        text-decoration: none
+        outline: none
+        // min-width: 120px
+        // max-width: 120px
+
+        .profile-avatar
+          height: 20px
+          width: 20px
+          margin-right: 8px
+          background-position: center
+          background-size: contain
+          background-repeat: no-repeat
+          background-color: rgba(90, 90, 90, 0.15)
+          border: 1px solid rgba(52, 48, 39, 0.1)
+          border-radius: 50%
+
+      .component-accounts-table__item_id
+        display: flex
+        align-items: center
+
+        > span
+          margin-right: 8px
+          max-width: 470px
+          overflow: hidden
+          text-overflow: ellipsis
+
+        .button-tooltip
+          span
+            color: #ffffff
+            font-size: 16px
+            font-weight: 500
+
+      .component-accounts-table__item_cash
+        display: flex
+        align-items: flex-end
+        justify-content: flex-end
+
+        > span:last-child
+          margin-left: 4px
+          @include define-font('Roboto', 500, 10px, var(--main-black-color))
+          opacity: 0.5
+
+    .component-accounts-table__item:hover
+      background: rgba(52, 48, 39, 0.05)
+
+    .component-accounts-table__item::after
+      content: ""
+      position: absolute
+      left: 24px
+      bottom: 0
+      height: 1px
+      width: calc(100% - 48px)
+      background-color: #3E445B
+      opacity: 0.1
+
+.component-accounts-table__pagination
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 138px
+  margin: 24px auto 8px
+  @include define-font('Gilroy', normal, 14px, var(--main-black-color))
+
+  > *
+    opacity: 0.6
+    cursor: pointer
+    transition: var(--main-transition)
+
+  > *:hover
+    opacity: 1
+
+.component-accounts-table__container
+  width: 100%
+
+@media (max-width: 1200px)
+  .component-accounts-table__container
+    width: 100vw
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+  .component-accounts-table__header, .component-accounts-table__body
+    min-width: 1200px
+
+@media (min-width: 721px) and (max-width: 1200px)
+
+  .component-accounts-table
+    .component-accounts-table__header
+      > div:nth-child(2)
+        max-width: 400px
+
+  .component-accounts-table
+    .component-accounts-table__body
+      .component-accounts-table__item
+        > div:nth-child(2)
+          max-width: 400px
+
+@media (max-width: 720px)
+
+  .component-accounts-table
+    .component-accounts-table__header
+      > div:nth-child(2)
+        max-width: 200px
+
+  .component-accounts-table
+    .component-accounts-table__body
+      .component-accounts-table__item
+        > div:nth-child(2)
+          max-width: 200px

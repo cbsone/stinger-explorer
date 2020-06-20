@@ -1,0 +1,48 @@
+@import "../../../assets/sass/mixins"
+
+.component-switcher
+  height: 40px
+  background: rgba(52, 48, 39, 0.05)
+  border-radius: 50px
+  @include display-flex(center, flex-start)
+  padding: 0 40px 0 20px
+  cursor: pointer
+  user-select: none
+  & p
+    @include define-font('Roboto', 400, 16px, #3E445B)
+    white-space: nowrap
+    margin-left: 15px
+
+.component-switcher__body
+  position: relative
+  width: 28px
+  min-width: 28px
+  height: 8px
+  border-radius: 20px
+  background-color: rgba(62, 68, 91, 0.5)
+  transition: background-color 300ms cubic-bezier(0, 0, 0.2, 1)
+
+  &:after
+    content: ""
+    position: absolute
+    left: 0
+    top: 50%
+    width: 14px
+    height: 14px
+    background: #FFFFFF
+    transform: translate(0, -50%)
+    border-radius: 50%
+    border: 2px solid rgba(62, 68, 91, 0.5)
+    transition-property: transform, border-color
+    transition: 300ms cubic-bezier(0, 0, 0.2, 1)
+
+.component-switcher__body--active
+  background-color: #F8A303
+  &:after
+    border-color: #F8A303
+    transform: translate(10px, -50%)
+
+@media (max-width: 1000px)
+  .component-switcher
+    p
+      @include define-font('Gilroy', 500, 12px, #3E445B)

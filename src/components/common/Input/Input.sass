@@ -1,0 +1,99 @@
+@import "../../../assets/sass/mixins"
+.component-input
+  position: relative
+  min-height: 1px
+  width: 100%
+  margin-bottom: 20px
+  & *
+    transition: var(--main-transition)
+
+
+.component-input > label
+  position: absolute
+  left: 24px
+  top: 18px
+  font-family: 'Roboto', sans-serif
+  font-size: 16px
+  line-height: 24px
+  letter-spacing: 0.15px
+  color: var(--main-black-color)
+  opacity: 0.4
+
+
+.component-input > input
+  height: 56px
+  width: 100%
+  min-width: 200px
+  padding: 22px 24px 12px
+  background: rgba(52, 48, 39, 0.05)
+  border: unset
+  border-bottom: 2px solid rgba(62, 68, 91, 0.3)
+  border-top-left-radius: 4px
+  border-top-right-radius: 4px
+  color: var(--main-black-color)
+  font-family: 'Roboto', sans-serif
+  font-size: 16px
+  line-height: 24px
+  letter-spacing: 0.15px
+
+/* Chrome, Safari, Edge, Opera */
+.component-input input::-webkit-outer-spin-button,
+.component-input input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+
+/* Firefox */
+.component-input input[type=number]
+  -moz-appearance: textfield
+
+
+
+.component-input > input.component-input__input-full,
+.component-input > input:focus
+  outline: none
+  border-color: #F8A303
+
+
+.component-input > input.component-input__input-full + label,
+.component-input > input:focus + label
+  top: 4px
+  font-size: 12px
+  line-height: 16px
+  letter-spacing: 0.4px
+
+.component-input__btn-max
+  @include reset-button
+  position: absolute
+  top: 50%
+  right: 8px
+  transform: translateY(-50%)
+  background: rgba(52, 48, 39, 0.1)
+  border-radius: 30px
+
+  & span
+    @include define-font('Gilroy', bold, 14px, rgba(79, 79, 79, 0.5))
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    transition: color 300ms linear
+    line-height: 12px
+
+  &:hover
+
+    & span
+      color: rgba(79, 79, 79, 1)
+
+    & .component-input__btn-max__hover-layer
+      opacity: 1
+
+.component-input__btn-max__hover-layer
+  width: 55px
+  height: 30px
+  background: linear-gradient(27.45deg, #FFA300 31.27%, #FFD1AA 100%)
+  box-shadow: 0px 0px 0.892857px rgba(236, 124, 42, 0.12), 0px 1.19048px 1.78571px rgba(236, 124, 42, 0.18), 0px 2.67857px 4.16667px rgba(236, 124, 42, 0.2), 0px 4.7619px 8.92857px rgba(236, 124, 42, 0.3)
+  border-radius: 30px
+  transition: opacity 300ms cubic-bezier(0, 0, 0.2, 1)
+  opacity: 0
+

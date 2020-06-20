@@ -1,0 +1,29 @@
+@import "../../../assets/sass/mixins"
+
+.receive-popup__text-field
+  width: 100%
+  padding: 0 20px
+
+.receive-popup__text-field__label
+  @include define-font('Roboto', 400, 16px, #3E445B)
+  opacity: 0.45
+
+.receive-popup__text-field__value-container
+  @include display-flex(center, flex-start)
+  margin-top: 6px
+
+.receive-popup__text-field__value
+  @include define-font('Roboto', 400, 16px, #3E445B)
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+.receive-popup__text-field__btn-copy
+  margin-left: 6px !important
+
+.receive-popup__btn-share
+  width: 110px
+  margin: 30px auto 10px
+
+  & svg
+    margin-right: 5px
