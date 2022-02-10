@@ -14,7 +14,7 @@
         "eosjs": "^20.0.3",
         "eosjs-ecc": "^4.0.7",
         "js-salsa20": "^1.0.0",
-        "node-sass": "^4.14.1",
+        "node-sass": "^7.0.0",
         "qrcode.react": "^1.0.0",
         "react": "^16.13.1",
         "react-bootstrap": "^1.0.1",
