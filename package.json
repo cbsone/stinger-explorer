@@ -14,7 +14,7 @@
         "eosjs": "^20.0.3",
         "eosjs-ecc": "^4.0.7",
         "js-salsa20": "^1.0.0",
-        "node-sass": "^4.14.1",
+        "node-sass": "^9.0.0",
         "qrcode.react": "^1.0.0",
         "react": "^16.13.1",
         "react-bootstrap": "^1.0.1",
@@ -23,7 +23,7 @@
         "react-feather": "^2.0.8",
         "react-notify-toast": "^0.5.1",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "3.4.1",
+        "react-scripts": "5.0.1",
         "react-syntax-highlighter": "^12.2.1",
         "uniqid": "^5.2.0"
     },
